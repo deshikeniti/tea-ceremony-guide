@@ -1,0 +1,823 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tea Ceremony Guide</title>
+<meta name="description" content="Your pocket guide to the Japanese tea ceremony: history, Zen, matcha, manners for guests and hosts, phrases with audio, famous matcha fans and a quiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=BIZ+UDPGothic:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    color-scheme: light;
+    --green: #2E4A3A;
+    --green-l: #E4EADC;
+    --orange: #B35A1F;
+    --orange-l: #F5E4D4;
+    --washi: #F7F3EA;
+    --card: #FFFFFF;
+    --sumi: #2B2B2B;
+    --gray: #6B6B6B;
+    --line: #E2DDD0;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+  body {
+    margin: 0; background: var(--washi); color: var(--sumi);
+    font-family: "BIZ UDPGothic", "Hiragino Sans", "Yu Gothic", system-ui, sans-serif;
+    font-size: 17px; line-height: 1.6; -webkit-text-size-adjust: 100%;
+  }
+  img { max-width: 100%; display: block; }
+  a { color: var(--orange); }
+  .wrap { max-width: 720px; margin: 0 auto; padding: 0 16px; }
+
+  /* hero */
+  header.hero { background: var(--green); color: #fff; padding: 36px 0 28px; }
+  .hero .kicker { color: var(--orange-l); font-weight: 700; letter-spacing: .08em; font-size: 13px; }
+  .hero h1 { margin: 6px 0 4px; font-size: 32px; line-height: 1.2; }
+  .hero h1 span { display: block; font-size: 22px; color: var(--orange-l); font-weight: 400; }
+  .hero p { margin: 8px 0 0; color: #E9EFE4; }
+
+  /* sticky nav */
+  nav.tabs { position: sticky; top: 0; z-index: 10; background: var(--washi); border-bottom: 1px solid var(--line); }
+  nav.tabs .wrap { display: flex; gap: 8px; overflow-x: auto; padding: 10px 16px; scrollbar-width: none; }
+  nav.tabs .wrap::-webkit-scrollbar { display: none; }
+  nav.tabs a {
+    flex: none; text-decoration: none; color: var(--green); background: var(--card);
+    border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; font-size: 15px; font-weight: 700;
+  }
+  nav.tabs a.p { background: var(--green); color: #fff; border-color: var(--green); }
+  nav.tabs a:active { background: var(--green-l); }
+
+  /* contents */
+  .toc { display: grid; gap: 10px; margin-top: 18px; }
+  .toc a { display: block; text-decoration: none; border-radius: var(--radius); padding: 14px 16px; color: #fff; }
+  .toc a b { display: block; font-size: 20px; }
+  .toc a span { font-size: 15px; opacity: .9; }
+  .toc .t1 { background: var(--green); }
+  .toc .t2 { background: var(--orange); }
+  .toc .t3 { background: var(--card); color: var(--green); border: 1px solid var(--line); }
+
+  /* part banners */
+  .part { margin: 36px -16px 0; padding: 22px 16px; color: #fff; }
+  .part.p1 { background: var(--green); }
+  .part.p2 { background: var(--orange); }
+  .part.p3 { background: #5B4A3A; }
+  .part .no { font-size: 13px; font-weight: 700; letter-spacing: .12em; opacity: .85; }
+  .part h2 { color: #fff; margin: 2px 0 0; }
+  .part h2 small { color: #fff; opacity: .85; }
+  .part p { margin: 6px 0 0; font-size: 15px; opacity: .92; }
+
+  section { padding: 28px 0 8px; }
+  h2 { color: var(--green); font-size: 26px; margin: 0 0 4px; line-height: 1.3; }
+  h2 small { color: var(--orange); font-size: 17px; font-weight: 700; margin-left: 6px; display: inline-block; white-space: nowrap; }
+  .jp, .ja, h2 small { word-break: keep-all; overflow-wrap: anywhere; }
+  .rule { width: 72px; height: 5px; border-radius: 3px; background: var(--orange); margin: 6px 0 16px; }
+  h3 { color: var(--green); font-size: 20px; margin: 22px 0 10px; }
+  .lead { color: var(--gray); margin: 0 0 14px; }
+
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 16px; margin-bottom: 12px; }
+  .tint-g { background: var(--green-l); border-color: transparent; }
+  .tint-o { background: var(--orange-l); border-color: transparent; }
+
+  /* flow */
+  ol.flow { list-style: none; margin: 0; padding: 0; counter-reset: f; }
+  ol.flow li { counter-increment: f; display: flex; gap: 12px; align-items: flex-start; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+  ol.flow li::before {
+    content: counter(f); flex: none; width: 32px; height: 32px; border-radius: 50%;
+    background: var(--green); color: #fff; font-weight: 700; display: grid; place-items: center; font-size: 15px;
+  }
+  ol.flow li b { color: var(--green); }
+  ol.flow li span { color: var(--gray); font-size: 15px; display: block; }
+
+  /* step cards */
+  .steps { list-style: none; margin: 0; padding: 0; counter-reset: s; }
+  .steps li {
+    counter-increment: s; position: relative; background: var(--card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 14px 16px 14px 62px; margin-bottom: 10px;
+  }
+  .steps li::before {
+    content: counter(s); position: absolute; left: 14px; top: 14px; width: 34px; height: 34px; border-radius: 50%;
+    background: var(--orange); color: #fff; font-weight: 700; display: grid; place-items: center;
+  }
+  .steps li b { display: block; color: var(--green); font-size: 18px; }
+  .jp { color: var(--orange); font-weight: 700; }
+  .phr { display: block; margin-top: 6px; padding: 8px 12px; background: var(--green-l); border-radius: 10px; }
+  .phr .ja { display: block; font-weight: 700; color: var(--green); font-size: 18px; }
+  .phr .ro { color: var(--orange); font-weight: 700; font-size: 15px; }
+  .say {
+    display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; background: var(--card);
+    border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; font: inherit; font-size: 15px; color: var(--green); cursor: pointer;
+  }
+
+  .pics { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 8px 0 12px; }
+  .pics figure { margin: 0; }
+  .pics img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 12px; }
+  figcaption { font-size: 14px; color: var(--gray); text-align: center; margin-top: 4px; }
+  figcaption b { color: var(--green); }
+  .wide { margin: 8px 0 12px; }
+  .wide img { width: 100%; border-radius: 12px; }
+
+  /* history */
+  .tl { list-style: none; margin: 0; padding: 0 0 0 18px; border-left: 3px solid var(--orange); }
+  .tl li { margin: 0 0 14px; position: relative; }
+  .tl li::before { content: ""; position: absolute; left: -26px; top: 7px; width: 13px; height: 13px; border-radius: 50%; background: var(--orange); }
+  .tl b { color: var(--green); display: block; font-size: 18px; }
+  .tl .note { font-size: 14px; color: var(--gray); }
+  .people { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 4px 0 16px; }
+  .people figure { margin: 0; }
+  .people img { width: 100%; aspect-ratio: 1; object-fit: cover; object-position: top; border-radius: 50%; background: #fff; border: 3px solid var(--green-l); }
+
+  .vs { display: grid; grid-template-columns: 1fr auto 1fr; gap: 8px; align-items: stretch; }
+  .vs .card { margin: 0; text-align: center; }
+  .vs .x { align-self: center; font-weight: 700; color: var(--orange); }
+  .gold { background: #F3E6B8; border-color: transparent; }
+  .big { font-size: 34px; font-weight: 700; color: var(--orange); line-height: 1.1; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .stats .card { margin: 0; }
+  .src { font-size: 12px; color: var(--gray); }
+
+  .kanji { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .kanji div { background: var(--green-l); border-radius: 12px; padding: 12px; text-align: center; }
+  .kanji .k { font-size: 44px; font-weight: 700; color: var(--green); line-height: 1.1; }
+  .kanji .m { font-weight: 700; color: var(--orange); }
+  .kanji .d { font-size: 14px; }
+
+  /* charts */
+  .chart svg { width: 100%; height: auto; display: block; }
+  .legend { display: flex; flex-wrap: wrap; gap: 12px; font-size: 14px; margin: 4px 0 8px; }
+  .legend i { display: inline-block; width: 18px; height: 10px; border-radius: 2px; margin-right: 4px; vertical-align: middle; }
+  .bars { display: grid; gap: 6px; margin: 8px 0 4px; }
+  .bar { display: grid; grid-template-columns: 44px 1fr 44px; gap: 8px; align-items: center; font-size: 14px; }
+  .bar i { display: block; height: 16px; border-radius: 4px; background: #D9A47E; }
+  .bar.hi i { background: var(--orange); }
+  .bar em { font-style: normal; font-weight: 700; }
+  .point { font-weight: 700; margin: 8px 0 4px; }
+  .covid { display: inline-block; background: var(--orange-l); color: var(--orange); border-radius: 8px; padding: 2px 8px; font-size: 14px; font-weight: 700; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; }
+  th, td { padding: 8px 6px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+  th { color: var(--green); word-break: keep-all; }
+  td.m { background: var(--orange-l); font-weight: 700; }
+  .tools { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .tools figure { margin: 0; }
+  .tools img { width: 100%; aspect-ratio: 4/3; object-fit: cover; border-radius: 10px; }
+
+  .doors { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .doors .card { margin: 0; }
+  .doors .card.star { background: var(--orange-l); border-color: transparent; }
+  .doors b { display: block; color: var(--green); font-size: 18px; }
+  .doors .rd { color: var(--orange); font-size: 14px; font-weight: 700; }
+  .doors p { margin: 4px 0 0; font-size: 15px; }
+
+  .sweet { display: grid; gap: 12px; }
+  .sweet .card { margin: 0; }
+  .sweet img { width: 100%; aspect-ratio: 16/9; object-fit: cover; border-radius: 10px; margin-bottom: 8px; }
+  .sweet h3 { margin: 0; }
+  .tag { display: inline-block; background: var(--green); color: #fff; border-radius: 999px; padding: 2px 12px; font-size: 14px; font-weight: 700; margin: 6px 0; }
+
+  /* phrases */
+  .phrase { display: flex; gap: 12px; align-items: center; }
+  .phrase .txt { flex: 1; min-width: 0; }
+  .phrase .ja { font-size: 22px; font-weight: 700; color: var(--green); line-height: 1.4; }
+  .phrase .ro { color: var(--orange); font-weight: 700; font-size: 15px; }
+  .phrase .en { font-size: 15px; }
+  .phrase .who { font-size: 13px; color: var(--gray); }
+  .speak {
+    flex: none; width: 52px; height: 52px; border-radius: 50%; border: 0; background: var(--green); color: #fff;
+    cursor: pointer; display: grid; place-items: center;
+  }
+  .speak:active { transform: scale(.95); }
+  .speak svg { width: 24px; height: 24px; fill: #fff; }
+  .speed { display: flex; gap: 8px; align-items: center; margin-bottom: 12px; font-size: 15px; color: var(--gray); }
+  .speed button {
+    font: inherit; font-size: 14px; border: 1px solid var(--line); background: var(--card); border-radius: 999px; padding: 4px 12px; cursor: pointer; color: var(--green);
+  }
+  .speed button[aria-pressed="true"] { background: var(--green); color: #fff; border-color: var(--green); }
+  #tts-note { font-size: 14px; color: var(--gray); display: none; }
+
+  /* places */
+  .place { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .place .city { font-size: 13px; font-weight: 700; color: var(--orange); letter-spacing: .05em; }
+  .place .name { font-weight: 700; color: var(--green); }
+  .place .note { font-size: 14px; color: var(--gray); }
+  .maps {
+    flex: none; text-decoration: none; background: var(--green); color: #fff; border-radius: 999px;
+    padding: 8px 14px; font-size: 14px; font-weight: 700;
+  }
+
+  /* famous fans */
+  .fan .nm, .love .nm { font-weight: 700; color: var(--green); font-size: 18px; line-height: 1.3; }
+  .fan .role, .love .role { font-size: 13px; color: var(--gray); }
+  .fan p { margin: 6px 0 4px; font-size: 16px; }
+  .fan .src a, .love .src a { color: var(--gray); }
+  .love { background: var(--orange-l); border-color: transparent; }
+  .love .row { padding: 10px 0; border-bottom: 1px dashed #E3C9B3; }
+  .love .row:first-child { padding-top: 0; }
+  .love .nm { color: var(--orange); }
+  .love p { margin: 2px 0 0; font-size: 16px; }
+  .love .src { margin-top: 10px; }
+
+  /* quiz */
+  .q h4 { margin: 0 0 10px; color: var(--green); font-size: 18px; }
+  .opts { display: grid; gap: 8px; }
+  .opts button {
+    text-align: left; font: inherit; font-size: 16px; padding: 12px 14px; border-radius: 12px;
+    border: 1px solid var(--line); background: var(--card); color: var(--sumi); cursor: pointer;
+  }
+  .opts button.right { background: var(--green); color: #fff; border-color: var(--green); }
+  .opts button.wrong { background: var(--orange-l); border-color: var(--orange); }
+  .why { display: none; margin-top: 10px; font-size: 15px; }
+  .q.done .why { display: block; }
+  #score { font-weight: 700; color: var(--green); }
+  .reset { font: inherit; font-size: 15px; border: 1px solid var(--line); background: var(--card); color: var(--green); border-radius: 999px; padding: 6px 16px; cursor: pointer; }
+
+  .top { display: block; text-align: right; font-size: 14px; margin-top: 4px; }
+
+  footer { background: var(--green); color: #fff; margin-top: 32px; padding: 32px 0 40px; text-align: center; }
+  footer .ichigo { font-size: 40px; font-weight: 700; }
+  footer .ichigo small { display: block; font-size: 16px; color: var(--orange-l); font-weight: 400; }
+  footer p { color: #E9EFE4; }
+  footer a { color: #fff; font-weight: 700; }
+
+  @media (min-width: 640px) {
+    .hero h1 { font-size: 40px; }
+    .kanji { grid-template-columns: repeat(4, 1fr); }
+    .tools { grid-template-columns: repeat(4, 1fr); }
+    .sweet { grid-template-columns: 1fr 1fr; }
+    .toc { grid-template-columns: 1fr 1fr 1fr; }
+  }
+</style>
+</head>
+<body id="home">
+
+<header class="hero">
+  <div class="wrap">
+    <div class="kicker">EF LANGUAGE SCHOOL · JAPANESE CULTURE ACTIVITY</div>
+    <h1>Tea Ceremony Guide <span>茶道（さどう / ちゃどう）Sadō</span></h1>
+    <p>Your pocket guide for today — and for your next bowl of matcha in Japan.</p>
+  </div>
+</header>
+
+<nav class="tabs" aria-label="Sections">
+  <div class="wrap">
+    <a href="#flow">Today</a>
+    <a class="p" href="#part1">Part 1</a>
+    <a href="#history">History</a>
+    <a href="#rikyu">Rikyū</a>
+    <a href="#zen">Zen</a>
+    <a href="#boom">Boom</a>
+    <a href="#made">Matcha</a>
+    <a class="p" href="#part2">Part 2</a>
+    <a href="#tools">Tools</a>
+    <a href="#doors">Doors</a>
+    <a href="#enter">Enter</a>
+    <a href="#sweets">Sweets</a>
+    <a href="#drink">Drink</a>
+    <a href="#host">Whisk</a>
+    <a href="#phrases">Phrases 🔊</a>
+    <a href="#places">Places</a>
+    <a class="p" href="#more">More</a>
+    <a href="#fans">Famous fans</a>
+    <a href="#quiz">Quiz</a>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- ===== Today ===== -->
+  <section id="flow">
+    <h2>Today's Flow <small>きょうの ながれ</small></h2>
+    <div class="rule"></div>
+    <ol class="flow">
+      <li><div><b>Hello!</b><span>Welcome</span></div></li>
+      <li><div><b>Mini lesson</b><span>This page — Part 1 &amp; Part 2</span></div></li>
+      <li><div><b>Watch</b><span>Tea demo: the host makes tea for you</span></div></li>
+      <li><div><b>Try in pairs</b><span>Take turns: host 亭主（ていしゅ）and guest 客（きゃく）</span></div></li>
+      <li><div><b>Nijiriguchi</b><span>Enter through the small door (if we have time)</span></div></li>
+      <li><div><b>Photo</b><span>Group photo 📸</span></div></li>
+    </ol>
+    <div class="toc">
+      <a class="t1" href="#part1"><b>PART 1 · Discover</b><span>History · Zen spirit · Matcha boom · How matcha is made</span></a>
+      <a class="t2" href="#part2"><b>PART 2 · Experience</b><span>Tools · Tea room · Sweets · Drinking · Whisking · Phrases</span></a>
+      <a class="t3" href="#more"><b>+ MORE</b><span>Famous matcha fans · Quiz</span></a>
+    </div>
+  </section>
+
+  <!-- ================= PART 1 ================= -->
+  <div class="part p1" id="part1">
+    <div class="no">PART 1</div>
+    <h2>Discover <small>しる</small></h2>
+    <p>Where tea came from, and why the world loves matcha now.</p>
+  </div>
+
+  <!-- History -->
+  <section id="history">
+    <h2>From China to Japan <small>れきし</small></h2>
+    <div class="rule"></div>
+    <div class="people">
+      <figure><img src="img/eisai.jpg" alt="Portrait of the monk Eisai" loading="lazy"><figcaption><b>Eisai</b> 栄西</figcaption></figure>
+      <figure><img src="img/juko.jpg" alt="Portrait of Murata Jukō" loading="lazy"><figcaption><b>Murata Jukō</b> 村田珠光</figcaption></figure>
+      <figure><img src="img/rikyu.jpg" alt="Portrait of Sen no Rikyū" loading="lazy"><figcaption><b>Sen no Rikyū</b> 千利休</figcaption></figure>
+    </div>
+    <ul class="tl">
+      <li><b>Early 800s</b>Japanese monks bring tea back from China.</li>
+      <li><b>1191</b>Monk Eisai 栄西（えいさい） brought tea seeds and the Song-dynasty method of drinking powdered tea to Japan.
+        <div class="note">Note: This powdered tea was different from modern matcha.</div></li>
+      <li><b>1211</b>Eisai wrote Japan's first book about tea: “Drinking Tea for Health.”</li>
+      <li><b>1400s</b>Zen + tea. Murata Jukō 村田珠光 started “wabi-cha” — simple, quiet tea.</li>
+      <li><b>1500s</b>Sen no Rikyū 千利休（せんのりきゅう） perfected the Way of Tea — 茶道（さどう / ちゃどう）.</li>
+    </ul>
+    <div class="card tint-g">In China, whisked powdered tea faded away. <b>In Japan, it grew into its own culture.</b></div>
+  </section>
+
+  <!-- Rikyu -->
+  <section id="rikyu">
+    <h2>Sen no Rikyū &amp; Tea Today <small>せんのりきゅう</small></h2>
+    <div class="rule"></div>
+    <div class="vs">
+      <div class="card gold"><b>Hideyoshi's<br>Golden Tea Room</b><br><span style="font-size:15px">Shiny gold. Shows power.</span></div>
+      <div class="x">vs</div>
+      <div class="card tint-g"><b>Rikyū's<br>Small, Simple Room</b><br><span style="font-size:15px">Quiet beauty = <span class="jp">wabi わび</span></span></div>
+    </div>
+    <p>Rikyū (1522–1591) was tea master for the samurai rulers Nobunaga and Hideyoshi. In 1591, Hideyoshi ordered him to die.</p>
+    <p>3 schools by his great-grandsons: 表千家 Omotesenke · <b>裏千家 Urasenke ★today</b> · 武者小路千家 Mushakōjisenke</p>
+    <h3>Urasenke today</h3>
+    <div class="stats">
+      <div class="card tint-o"><div class="big">102</div>years old — the 15th Grand Master, Sen Genshitsu, died in 2025</div>
+      <div class="card tint-o"><div class="big">38</div>countries &amp; regions, 113 offices around the world</div>
+    </div>
+    <p class="src">Sources: Urasenke official website (overseas offices, as of Jan 2024); AFP/Kyodo news (Aug 14, 2025).</p>
+  </section>
+
+  <!-- Zen -->
+  <section id="zen">
+    <h2>Zen &amp; Mindfulness <small>ぜん</small></h2>
+    <div class="rule"></div>
+    <p>Four words by Rikyū — <span class="jp">和敬清寂（わ・けい・せい・じゃく）</span></p>
+    <div class="kanji">
+      <div><div class="k">和</div><div class="m">Wa — Harmony</div><div class="d">with people and nature</div></div>
+      <div><div class="k">敬</div><div class="m">Kei — Respect</div><div class="d">for everyone and everything</div></div>
+      <div><div class="k">清</div><div class="m">Sei — Purity</div><div class="d">a clean room, a clean heart</div></div>
+      <div><div class="k">寂</div><div class="m">Jaku — Tranquility</div><div class="d">a calm, peaceful mind</div></div>
+    </div>
+    <div class="card tint-g" style="margin-top:12px">
+      <b>Mindfulness:</b> Listen to the water. Watch the whisk. Taste slowly. One bowl, one moment.<br>
+      <b>Tea is a “total art”:</b> garden, architecture, calligraphy, flowers, ceramics, kimono, sweets.
+    </div>
+  </section>
+
+  <!-- Boom -->
+  <section id="boom">
+    <h2>Fewer Students in Japan, Bigger Boom in the World! <small>ブーム</small></h2>
+    <div class="rule"></div>
+
+    <h3 style="margin-top:4px">JAPAN: People who do tea ceremony</h3>
+    <div class="legend">
+      <span><i style="background:#B8C4B2"></i>Total (million)</span>
+      <span><i style="background:var(--orange);height:3px"></i>Women</span>
+      <span><i style="background:var(--green);height:3px"></i>Men</span>
+    </div>
+    <div class="chart" role="img" aria-label="Tea ceremony population in Japan: 2001 2.73 million, 2006 2.11, 2011 1.70, 2016 1.76, 2021 0.92. Women 2.40, 1.85, 1.50, 1.45, 0.74. Men 0.33, 0.26, 0.20, 0.31, 0.18.">
+      <svg viewBox="0 0 340 215" font-family="inherit" font-size="11">
+        <g stroke="#E2DDD0" stroke-width="1">
+          <line x1="36" y1="180" x2="332" y2="180"/><line x1="36" y1="126.7" x2="332" y2="126.7"/>
+          <line x1="36" y1="73.3" x2="332" y2="73.3"/><line x1="36" y1="20" x2="332" y2="20"/>
+        </g>
+        <g fill="#6B6B6B" text-anchor="end"><text x="31" y="184">0</text><text x="31" y="130.7">1.0</text><text x="31" y="77.3">2.0</text><text x="31" y="24">3.0</text></g>
+        <g fill="#B8C4B2">
+          <rect x="54" y="34.5" width="30" height="145.5" rx="2"/>
+          <rect x="112" y="67.6" width="30" height="112.4" rx="2"/>
+          <rect x="170" y="89.3" width="30" height="90.7" rx="2"/>
+          <rect x="228" y="86.1" width="30" height="93.9" rx="2"/>
+          <rect x="286" y="131" width="30" height="49" rx="2" fill="#2E4A3A"/>
+        </g>
+        <g font-weight="700" text-anchor="middle" fill="#2B2B2B">
+          <text x="69" y="29">2.73</text><text x="127" y="62">2.11</text><text x="185" y="84">1.70</text><text x="243" y="81">1.76</text><text x="301" y="126">0.92</text>
+        </g>
+        <polyline points="69,52 127,81.4 185,100.1 243,102.5 301,140.7" fill="none" stroke="#B35A1F" stroke-width="2.5" stroke-dasharray="6 4"/>
+        <g fill="#B35A1F"><circle cx="69" cy="52" r="3.5"/><circle cx="127" cy="81.4" r="3.5"/><circle cx="185" cy="100.1" r="3.5"/><circle cx="243" cy="102.5" r="3.5"/><circle cx="301" cy="140.7" r="3.5"/></g>
+        <polyline points="69,162.5 127,166.1 185,169.3 243,163.6 301,170.3" fill="none" stroke="#2E4A3A" stroke-width="2.5"/>
+        <g fill="#2E4A3A"><circle cx="69" cy="162.5" r="3.5"/><circle cx="127" cy="166.1" r="3.5"/><circle cx="185" cy="169.3" r="3.5"/><circle cx="243" cy="163.6" r="3.5"/><circle cx="301" cy="170.3" r="3.5"/></g>
+        <g text-anchor="middle" fill="#2E4A3A" font-size="10"><text x="69" y="156">0.33</text><text x="127" y="160">0.26</text><text x="185" y="163">0.20</text><text x="243" y="157">0.31</text><text x="318" y="168" text-anchor="start">0.18</text></g>
+        <g text-anchor="middle" fill="#2B2B2B"><text x="69" y="197">2001</text><text x="127" y="197">2006</text><text x="185" y="197">2011</text><text x="243" y="197">2016</text><text x="301" y="197">2021*</text></g>
+        <text x="332" y="212" text-anchor="end" fill="#6B6B6B" font-size="10">million people</text>
+      </svg>
+    </div>
+    <p class="point" style="color:var(--green)">Down to about 1/3 in 20 years ↓</p>
+    <p style="margin:0">Fewer and older students in Japan. Men: up 1.5× from 2011 to 2016 ↑</p>
+    <p><span class="covid">*2021: survey year during COVID-19</span></p>
+
+    <h3>WORLD: Japan's green tea exports</h3>
+    <p class="lead" style="margin:0">¥ billion (most of it is matcha &amp; powdered tea)</p>
+    <div class="bars">
+      <div class="bar"><span>2015</span><i style="width:14%"></i><em>10</em></div>
+      <div class="bar"><span>2017</span><i style="width:20%"></i><em>14</em></div>
+      <div class="bar"><span>2019</span><i style="width:20%"></i><em>15</em></div>
+      <div class="bar"><span>2021</span><i style="width:28%"></i><em>20</em></div>
+      <div class="bar"><span>2023</span><i style="width:40%"></i><em>29</em></div>
+      <div class="bar"><span>2024</span><i style="width:50%"></i><em>36</em></div>
+      <div class="bar hi"><span>2025</span><i style="width:100%"></i><em>72</em></div>
+    </div>
+    <p class="point" style="color:var(--orange)">About 7× in 10 years ↑</p>
+    <p style="margin:0">Matcha lattes &amp; sweets worldwide — Japan can't make enough matcha!</p>
+    <p class="src">Sources: MIC Survey on Time Use and Leisure Activities (2001–2021, participants aged 10+); Ministry of Finance Trade Statistics via Japan Tea Export Council &amp; House of Councillors report (2025).</p>
+  </section>
+
+  <!-- How matcha is made -->
+  <section id="made">
+    <h2>How Matcha Is Made <small>まっちゃの つくりかた</small></h2>
+    <div class="rule"></div>
+    <div class="pics">
+      <figure><img src="img/shade.jpg" alt="Tea plants growing under shade" loading="lazy"><figcaption><b>1. Shade</b> — cover the plants for about 2 or 3 weeks → sweet &amp; umami</figcaption></figure>
+      <figure><img src="img/steam.jpg" alt="Fresh tea leaves in a basket" loading="lazy"><figcaption><b>2. Pick &amp; steam</b> — young leaves. Steam and dry (no rolling).</figcaption></figure>
+      <figure><img src="img/tencha.jpg" alt="Tea stems separated from leaves" loading="lazy"><figcaption><b>3. Remove</b> — take out stems and veins → “tencha” てん茶</figcaption></figure>
+      <figure><img src="img/stone-mill.jpg" alt="Stone mill grinding matcha" loading="lazy"><figcaption><b>4. Grind</b> — slowly with a stone mill → matcha powder</figcaption></figure>
+    </div>
+    <div class="card tint-o">Only about <b>40 g of matcha per hour</b> from one stone mill — that's why good matcha is precious.</div>
+
+    <h3>Matcha vs. Other Teas <small class="jp" style="font-size:16px">ちがい</small></h3>
+    <table>
+      <tr><th></th><th>Matcha 抹茶</th><th>Sencha 煎茶</th><th>Black tea 紅茶</th></tr>
+      <tr><th>Grown</th><td class="m">In shade</td><td>In the sun</td><td>In the sun</td></tr>
+      <tr><th>Made</th><td class="m">Steamed, not rolled, ground</td><td>Steamed &amp; rolled</td><td>Fully oxidized</td></tr>
+      <tr><th>You drink…</th><td class="m">The WHOLE leaf 🍃</td><td>Only the water</td><td>Only the water</td></tr>
+      <tr><th>Taste</th><td class="m">Rich umami, sweet &amp; a little bitter</td><td>Fresh, grassy</td><td>Strong, deep</td></tr>
+    </table>
+    <h3>Two kinds of matcha tea</h3>
+    <div class="wide"><img src="img/usucha-koicha.jpg" alt="Usucha (thin, foamy) and koicha (thick) matcha side by side" loading="lazy"></div>
+    <div class="stats">
+      <div class="card tint-g"><b>薄茶 usucha</b> (thin)<br>= Americano ☕ <span class="jp">★today</span><br><span style="font-size:15px">2 g + 60–70 ml hot water</span></div>
+      <div class="card tint-o"><b>濃茶 koicha</b> (thick)<br>= Espresso ☕☕<br><span style="font-size:15px">4 g + 40 ml hot water</span></div>
+    </div>
+  </section>
+
+  <!-- ================= PART 2 ================= -->
+  <div class="part p2" id="part2">
+    <div class="no">PART 2</div>
+    <h2>Experience <small>やってみる</small></h2>
+    <p>Tools, the tea room, and how to be a guest and a host.</p>
+  </div>
+
+  <!-- Tools -->
+  <section id="tools">
+    <h2>Tea Tools <small>どうぐ</small></h2>
+    <div class="rule"></div>
+    <div class="tools">
+      <figure><img src="img/chawan.jpg" alt="Tea bowl" loading="lazy"><figcaption><b>茶碗 Chawan</b><br>tea bowl</figcaption></figure>
+      <figure><img src="img/natsume.jpg" alt="Lacquered tea caddies" loading="lazy"><figcaption><b>棗 Natsume</b><br>tea caddy</figcaption></figure>
+      <figure><img src="img/chashaku.jpg" alt="Bamboo tea scoop with matcha" loading="lazy"><figcaption><b>茶杓 Chashaku</b><br>tea scoop</figcaption></figure>
+      <figure><img src="img/chasen.jpg" alt="Bamboo tea whisk" loading="lazy"><figcaption><b>茶筅 Chasen</b><br>tea whisk</figcaption></figure>
+      <figure><img src="img/kama.jpg" alt="Iron kettle with a bamboo ladle" loading="lazy"><figcaption><b>釜・柄杓 Kama &amp; Hishaku</b><br>kettle &amp; ladle</figcaption></figure>
+      <figure><img src="img/fukusa.jpg" alt="Red silk cloth" loading="lazy"><figcaption><b>袱紗 Fukusa</b><br>silk cloth</figcaption></figure>
+      <figure><img src="img/tokonoma.jpg" alt="Alcove with a hanging scroll and flowers" loading="lazy"><figcaption><b>床の間 Tokonoma</b><br>alcove: scroll &amp; flowers</figcaption></figure>
+      <figure><img src="img/kaishi.jpg" alt="White kaishi paper and a wooden kuromoji pick on a tray" loading="lazy"><figcaption><b>懐紙・黒文字</b><br>kaishi paper &amp; kuromoji pick</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- Doors -->
+  <section id="doors">
+    <h2>Tea Room Doors <small>いりぐち</small></h2>
+    <div class="rule"></div>
+    <div class="wide"><img src="img/nijiriguchi.jpg" alt="A small sliding door (nijiriguchi) low on the wall of a tea house, with a stepping stone in front" loading="lazy" style="aspect-ratio:4/3;object-fit:cover"></div>
+    <div class="doors">
+      <div class="card star"><b>躙口</b><span class="rd">にじりぐち Nijiriguchi</span><p>Small door for guests (about 60–70 cm). ★</p></div>
+      <div class="card"><b>貴人口</b><span class="rd">きにんぐち Kinin-guchi</span><p>Tall door for noble guests. Walk in.</p></div>
+      <div class="card"><b>茶道口</b><span class="rd">さどうぐち Sadōguchi</span><p>Door for the host.</p></div>
+      <div class="card"><b>給仕口</b><span class="rd">きゅうじぐち Kyūjiguchi</span><p>Door for serving food.</p></div>
+    </div>
+    <div class="card tint-g" style="margin-top:12px"><b>Story:</b> Even a samurai had to leave his sword outside, bow low and crawl in. Inside, everyone is equal.</div>
+  </section>
+
+  <!-- Enter -->
+  <section id="enter">
+    <h2>Entering the Tea Room <small>はいりかた</small></h2>
+    <div class="rule"></div>
+    <ol class="steps">
+      <li><b>Before you enter</b>Take off watches &amp; rings — they can scratch the bowl. Wear clean socks.</li>
+      <li><b>Bow at the door</b>Sit, bow, then go in on your knees.</li>
+      <li><b>Don't step on edges</b>Don't step on the tatami edges (<span class="jp">へり heri</span>).</li>
+      <li><b>Look at the alcove</b>Bow and enjoy the scroll and flowers in the <span class="jp">床の間 tokonoma</span>.</li>
+      <li><b>Sit in seiza 正座</b>Legs hurt? It's OK to relax your legs. 😊</li>
+      <li><b>No perfume</b>Tea has a gentle smell. Please enjoy it!</li>
+    </ol>
+  </section>
+
+  <!-- Sweets -->
+  <section id="sweets">
+    <h2>Guest ① Sweets: Types &amp; How to Eat <small>しゅるいと たべかた</small></h2>
+    <div class="rule"></div>
+    <div class="sweet">
+      <div class="card">
+        <img src="img/omogashi.jpg" alt="Colorful moist Japanese sweets" loading="lazy">
+        <h3>主菓子 <span class="jp">おもがし</span></h3>
+        <div>Omogashi — moist sweets</div>
+        <span class="tag">Use the pick</span>
+        <div>Take one with the pick (<span class="jp">黒文字 kuromoji</span>) and put it on your paper (<span class="jp">懐紙 kaishi</span>). Cut it into small pieces with the pick, then eat.</div>
+      </div>
+      <div class="card">
+        <img src="img/higashi.jpg" alt="Small dry Japanese sweets" loading="lazy">
+        <h3>干菓子 <span class="jp">ひがし</span></h3>
+        <div>Higashi — dry sweets</div>
+        <span class="tag">Use your fingers</span>
+        <div>Take them with your fingers and put them on your kaishi. Eat them with your fingers.</div>
+      </div>
+    </div>
+    <div class="card tint-o" style="margin-top:12px"><b>Both: eat your sweets BEFORE you drink the matcha.</b> Sweet first, then bitter matcha — a perfect match!</div>
+  </section>
+
+  <!-- Drinking -->
+  <section id="drink">
+    <h2>Guest ② Drinking Tea <small>のみかた</small></h2>
+    <div class="rule"></div>
+    <ol class="steps">
+      <li>Place the bowl between you and the next guest. Bow lightly and say:
+        <span class="phr"><span class="ja">おさきに</span><span class="ro">Osaki ni</span> — “Excuse me for going first.”</span>
+        <button class="say" data-say="おさきに">🔊 Listen</button><br>
+        If someone drank before you, say to them:
+        <span class="phr"><span class="ja">おしょうばん させて いただきます</span><span class="ro">Oshōban sasete itadakimasu</span> — “I will join you.”</span>
+        <button class="say" data-say="おしょうばん、させて いただきます">🔊 Listen</button></li>
+      <li>Place the bowl in front of you. Bow deeply and say:
+        <span class="phr"><span class="ja">おてまえ ちょうだい いたします</span><span class="ro">Otemae chōdai itashimasu</span> — “Thank you for the tea.”</span>
+        <button class="say" data-say="おてまえ、ちょうだい いたします">🔊 Listen</button></li>
+      <li>Pick up the bowl with your right hand and put it on your left palm. Raise it slightly to thank the host.</li>
+      <li>Turn the bowl <b style="display:inline;font-size:inherit">clockwise ↻ twice</b> to avoid the front. Enjoy the tea. Slurp on the last sip.</li>
+      <li>Wipe the rim with your right thumb and index finger, left to right. Wipe your fingers on the kaishi.</li>
+      <li>Turn the bowl <b style="display:inline;font-size:inherit">counter-clockwise ↺ twice</b>, so the front faces you.</li>
+      <li>Put it down and look at its shape. Pick it up with both hands to look closer (keep it low). Put it down and look again.</li>
+      <li>Turn the bowl clockwise so the front faces the host and return it.</li>
+    </ol>
+  </section>
+
+  <!-- Host -->
+  <section id="host">
+    <h2>Host: Making Matcha <small>たてかた</small></h2>
+    <div class="rule"></div>
+    <div class="pics">
+      <figure><img src="img/chashaku.jpg" alt="Matcha powder and a bamboo tea scoop" loading="lazy"><figcaption><b>茶杓 chashaku</b> — tea scoop</figcaption></figure>
+      <figure><img src="img/chasen.jpg" alt="Bamboo tea whisk" loading="lazy"><figcaption><b>茶筅 chasen</b> — tea whisk</figcaption></figure>
+    </div>
+    <ol class="steps">
+      <li><b>Matcha in</b>1.5 scoops (about 2 g) with the <span class="jp">茶杓 chashaku</span>.</li>
+      <li><b>Hot water in</b>About 50–70 ml. Pour slowly.</li>
+      <li><b>Whisk!</b>Move your wrist quickly back and forth in a straight line — slow → fast.</li>
+      <li><b>Finish with “の”</b>Make fine foam. Draw the hiragana <span class="jp">の</span> (“no”) on top, then lift the whisk from the center.</li>
+      <li><b>Serve</b>Turn the bowl so its front faces your guest. Bow together.</li>
+    </ol>
+    <div class="card tint-g"><b>At home?</b> No chasen? A small milk frother works too. Try matcha with hot water first — then a matcha latte!</div>
+  </section>
+
+  <!-- Phrases -->
+  <section id="phrases">
+    <h2>Let's Say It Together! <small>いってみよう</small></h2>
+    <div class="rule"></div>
+    <div class="speed" role="group" aria-label="Speaking speed">Speed:
+      <button type="button" data-rate="0.6" aria-pressed="false">Slow</button>
+      <button type="button" data-rate="0.85" aria-pressed="true">Normal</button>
+    </div>
+    <p id="tts-note">Audio is not available in this browser. Please read the romaji aloud!</p>
+
+    <div class="card phrase">
+      <div class="txt"><div class="ja">おさきに</div><div class="ro">Osaki ni</div>
+        <div class="en">Excuse me for going first.</div><div class="who">→ next guest</div></div>
+      <button class="speak" data-say="おさきに" aria-label="Listen: Osaki ni"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></button>
+    </div>
+    <div class="card phrase">
+      <div class="txt"><div class="ja">おしょうばん させて いただきます</div><div class="ro">Oshōban sasete itadakimasu</div>
+        <div class="en">I will join you.</div><div class="who">→ guest before you</div></div>
+      <button class="speak" data-say="おしょうばん、させて いただきます" aria-label="Listen: Oshoban sasete itadakimasu"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></button>
+    </div>
+    <div class="card phrase">
+      <div class="txt"><div class="ja">おてまえ ちょうだい いたします</div><div class="ro">Otemae chōdai itashimasu</div>
+        <div class="en">Thank you for the tea.</div><div class="who">→ host, before drinking</div></div>
+      <button class="speak" data-say="おてまえ、ちょうだい いたします" aria-label="Listen: Otemae chodai itashimasu"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></button>
+    </div>
+    <div class="card phrase">
+      <div class="txt"><div class="ja">けっこうな おてまえでした</div><div class="ro">Kekkō na otemae deshita</div>
+        <div class="en">That was wonderful tea.</div><div class="who">→ host, after drinking</div></div>
+      <button class="speak" data-say="けっこうな、おてまえでした" aria-label="Listen: Kekko na otemae deshita"><svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3A4.5 4.5 0 0 0 14 8v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg></button>
+    </div>
+  </section>
+
+  <!-- Places -->
+  <section id="places">
+    <h2>Enjoy Matcha &amp; Sweets in Japan <small>おすすめ</small></h2>
+    <div class="rule"></div>
+    <div class="pics">
+      <figure><img src="img/hamarikyu.jpg" alt="Teahouse on a pond at Hama-rikyu Gardens with Tokyo skyline" loading="lazy"></figure>
+      <figure><img src="img/tea-tatami.jpg" alt="A bowl of matcha and a sweet on tatami facing a garden" loading="lazy"></figure>
+    </div>
+    <div class="card place"><div><div class="city">TOKYO</div><div class="name">Hama-rikyu Gardens 浜離宮恩賜庭園</div><div class="note">Nakajima teahouse on the pond</div></div>
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Hama-rikyu+Gardens+Nakajima+no+Ochaya" target="_blank" rel="noopener">Map</a></div>
+    <div class="card place"><div><div class="city">TOKYO</div><div class="name">Rikugien Garden 六義園</div><div class="note">Fukiage teahouse</div></div>
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Rikugien+Fukiage+Chaya" target="_blank" rel="noopener">Map</a></div>
+    <div class="card place"><div><div class="city">TOKYO</div><div class="name">Happo-en 八芳園</div><div class="note">Mu-an teahouse</div></div>
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Happo-en+Muan" target="_blank" rel="noopener">Map</a></div>
+    <div class="card place"><div><div class="city">KAMAKURA</div><div class="name">Hōkokuji 報国寺</div><div class="note">Bamboo garden &amp; matcha</div></div>
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=Hokokuji+Temple+Kamakura" target="_blank" rel="noopener">Map</a></div>
+    <div class="card place"><div><div class="city">KYOTO</div><div class="name">Jikkōin 実光院</div><div class="note">Temple garden &amp; matcha</div></div>
+      <a class="maps" href="https://www.google.com/maps/search/?api=1&query=%E5%AE%9F%E5%85%89%E9%99%A2+%E4%BA%AC%E9%83%BD%E5%B8%82%E5%B7%A6%E4%BA%AC%E5%8C%BA%E5%A4%A7%E5%8E%9F%E5%8B%9D%E6%9E%97%E9%99%A2%E7%94%BA187" target="_blank" rel="noopener">Map</a></div>
+  </section>
+
+  <!-- ================= MORE ================= -->
+  <div class="part p3" id="more">
+    <div class="no">+ MORE</div>
+    <h2>Tips &amp; Quiz <small>もっと</small></h2>
+    <p>Famous people who love tea — then test yourself!</p>
+  </div>
+
+  <!-- Famous fans -->
+  <section id="fans">
+    <h2>Famous Matcha &amp; Tea Fans <small>ゆうめいじん</small></h2>
+    <div class="rule"></div>
+
+    <h3 style="margin-top:4px">Inspired by Japanese tea</h3>
+    <div class="card fan">
+      <div class="nm">Steve Jobs</div><div class="role">Co-founder of Apple</div>
+      <p>He loved Zen and Kyoto (“Kyoto has the real thing”). In 1996 he met the potter Shakunaga Yukio 釋永由紀夫 (Etchū-Seto ware, Toyama) at a show in Kyoto and bought many of his works. One of his first orders was a <b>tea bowl 茶碗</b>.</p>
+      <div class="src"><a href="https://kanakurekai.com/potters/yukio-shakunaga/" target="_blank" rel="noopener">Etchū-Seto potters' association</a> · <a href="https://kogeiart.kyoto.jp/articles/post-1737/" target="_blank" rel="noopener">Kogei Art Kyoto</a></div>
+    </div>
+    <div class="card fan">
+      <div class="nm">Brad Pitt</div><div class="role">Actor</div>
+      <p>In a 2017 GQ Style interview, he made matcha for the writer: he sifted the powder, poured hot water and whisked it with a bamboo whisk (<span class="jp">茶筅 chasen</span>) — just like you today!</p>
+      <div class="src"><a href="https://www.baltimoresun.com/2017/05/03/brad-pitt-talks-about-alcohol-therapy-and-matcha-tea-in-his-first-post-split-interview/" target="_blank" rel="noopener">Washington Post / Baltimore Sun, May 2017</a></div>
+    </div>
+
+    <h3>They love matcha! 💚</h3>
+    <div class="card love">
+      <div class="row"><div class="nm">Billie Eilish</div><div class="role">Singer</div>
+        <p>Loves matcha so much that she invested in a matcha energy drink company (2018).</p></div>
+      <div class="row"><div class="nm">Gwyneth Paltrow</div><div class="role">Actress</div>
+        <p>A matcha latte lover — her 2015 matcha latte photo went viral in the US.</p></div>
+      <div class="row"><div class="nm">Miranda Kerr</div><div class="role">Model</div>
+        <p>Matcha is part of her wellness life — her brand's daily supplement even includes matcha.</p></div>
+      <div class="row"><div class="nm">Hailey &amp; Justin Bieber</div><div class="role">Model / singer</div>
+        <p>Often seen at matcha cafés in LA. Hailey says: “When you drink a matcha from Japan, it spoils everything for you.”</p></div>
+      <div class="row"><div class="nm">Selena Gomez</div><div class="role">Singer · actress</div>
+        <p>A true matcha girl — she even goes on “matcha dates” with her dog!</p></div>
+      <div class="src">Sources: <a href="https://variety.com/2018/biz/news/diplo-ansel-elgort-matchabar-energy-drink-1202874382/" target="_blank" rel="noopener">Variety</a> · <a href="https://culinarywoman.substack.com/p/how-gwyneth-paltrow-set-off-a-matcha" target="_blank" rel="noopener">Culinary Woman</a> · <a href="https://blog.koraorganics.com/mirandas-morning-routine/" target="_blank" rel="noopener">KORA Organics</a> · <a href="https://www.eonline.com/news/1431511/hailey-biebers-hot-wellness-takes-on-pilates-matcha" target="_blank" rel="noopener">E! News</a> · <a href="https://stylecaster.com/selena-gomez-matcha-date-dog-photo/" target="_blank" rel="noopener">StyleCaster</a></div>
+    </div>
+
+    <h3>Writers &amp; books 📚</h3>
+    <div class="card fan">
+      <div class="nm">Rabindranath Tagore</div><div class="role">Indian poet · first Asian Nobel Prize in Literature (1913)</div>
+      <p>In 1916 he stayed for about 2½ months at Sankeien 三溪園 in Yokohama — a garden with historic tea houses, built by the tea lover Hara Sankei. He wrote his poems “Stray Birds” there. He was also a friend of Okakura Kakuzō (below).</p>
+      <div class="src"><a href="https://en.wikipedia.org/wiki/Sankei-en" target="_blank" rel="noopener">Sankei-en (Wikipedia)</a></div>
+    </div>
+    <div class="card fan">
+      <div class="nm">Okakura Kakuzō 岡倉天心 — “The Book of Tea”</div><div class="role">Written in English, New York, 1906</div>
+      <p>A short book that explained tea and Zen to the world. It inspired the US architect Frank Lloyd Wright and the painter Georgia O'Keeffe. Still easy to find in English — a great first book!</p>
+      <div class="src"><a href="https://en.wikipedia.org/wiki/The_Book_of_Tea" target="_blank" rel="noopener">The Book of Tea (Wikipedia)</a></div>
+    </div>
+    <div class="card fan">
+      <div class="nm">Kawabata Yasunari 川端康成 — “Thousand Cranes” 千羽鶴</div><div class="role">Nobel Prize in Literature (1968)</div>
+      <p>A famous novel about people and old tea bowls, set around the tea ceremony. Available in English.</p>
+    </div>
+  </section>
+
+  <!-- Quiz -->
+  <section id="quiz">
+    <h2>Quick Quiz <small>クイズ</small></h2>
+    <div class="rule"></div>
+    <p class="lead">Tap your answer. Score: <span id="score">0</span> / <span id="total">5</span></p>
+
+    <div class="card q" data-answer="1">
+      <h4>Q1. Why is the nijiriguchi (tea room door) so small?</h4>
+      <div class="opts">
+        <button type="button">A. To keep the room warm</button>
+        <button type="button">B. So everyone bows and enters as equals</button>
+        <button type="button">C. People were very small long ago</button>
+      </div>
+      <div class="why">→ Even samurai left their swords outside and bowed to enter. Inside the tea room, everyone is equal.</div>
+    </div>
+
+    <div class="card q" data-answer="2">
+      <h4>Q2. Why do you turn the tea bowl before drinking?</h4>
+      <div class="opts">
+        <button type="button">A. To cool the tea</button>
+        <button type="button">B. To mix the tea</button>
+        <button type="button">C. To avoid drinking from its front</button>
+      </div>
+      <div class="why">→ The front is the most beautiful side. You don't drink from it, to show respect to the host.</div>
+    </div>
+
+    <div class="card q" data-answer="1">
+      <h4>Q3. Matcha has caffeine AND L-theanine (the source of its umami). Together, how do they make you feel?</h4>
+      <div class="opts">
+        <button type="button">A. Sleepy and slow</button>
+        <button type="button">B. Calm but focused</button>
+        <button type="button">C. Very hungry</button>
+      </div>
+      <div class="why">→ L-theanine helps you relax, and caffeine keeps you awake — so you feel calm but focused. Zen monks drank tea to stay awake during meditation. And because you drink the whole leaf, you get more antioxidants (catechins) than from a cup of sencha.</div>
+    </div>
+
+    <div class="card q" data-answer="2">
+      <h4>Q4. Which famous person ordered a tea bowl from a Japanese potter?</h4>
+      <div class="opts">
+        <button type="button">A. Billie Eilish</button>
+        <button type="button">B. Brad Pitt</button>
+        <button type="button">C. Steve Jobs</button>
+      </div>
+      <div class="why">→ Steve Jobs met the potter Shakunaga Yukio in Kyoto in 1996. One of his first orders was a tea bowl.</div>
+    </div>
+
+    <div class="card q" data-answer="1">
+      <h4>Q5. Which book, written in English in 1906, explained tea to the world?</h4>
+      <div class="opts">
+        <button type="button">A. “Thousand Cranes”</button>
+        <button type="button">B. “The Book of Tea”</button>
+        <button type="button">C. “Stray Birds”</button>
+      </div>
+      <div class="why">→ “The Book of Tea” by Okakura Kakuzō. It inspired Frank Lloyd Wright and many others.</div>
+    </div>
+    <button type="button" class="reset" id="reset">↺ Try again</button>
+    <a class="top" href="#home">▲ Back to top</a>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="ichigo">一期一会<small>いちごいちえ · Ichi-go ichi-e</small></div>
+    <p>Treasure every moment — it will never come again.</p>
+    <p>Thank you for joining us!<br><span class="ja">ありがとうございました</span><br>We'd love your feedback on Instagram:<br>
+      <a href="https://www.instagram.com/love_japan_tea_ceremony/" target="_blank" rel="noopener">@love_japan_tea_ceremony</a></p>
+  </div>
+</footer>
+
+<script>
+  // ---- Text-to-speech (Japanese) ----
+  var rate = 0.85;
+  var canSpeak = 'speechSynthesis' in window;
+  var jaVoice = null;
+  function pickVoice() {
+    if (!canSpeak) return;
+    var vs = speechSynthesis.getVoices();
+    jaVoice = vs.find(function (v) { return /^ja(-|_|$)/i.test(v.lang); }) || null;
+  }
+  if (canSpeak) {
+    pickVoice();
+    speechSynthesis.onvoiceschanged = pickVoice;
+  } else {
+    document.getElementById('tts-note').style.display = 'block';
+  }
+  function say(text) {
+    if (!canSpeak) return;
+    speechSynthesis.cancel();
+    var u = new SpeechSynthesisUtterance(text);
+    u.lang = 'ja-JP';
+    u.rate = rate;
+    if (jaVoice) u.voice = jaVoice;
+    speechSynthesis.speak(u);
+  }
+  document.querySelectorAll('[data-say]').forEach(function (b) {
+    b.addEventListener('click', function () { say(b.getAttribute('data-say')); });
+  });
+  document.querySelectorAll('.speed button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      rate = parseFloat(b.getAttribute('data-rate'));
+      document.querySelectorAll('.speed button').forEach(function (x) {
+        x.setAttribute('aria-pressed', x === b ? 'true' : 'false');
+      });
+    });
+  });
+
+  // ---- Quiz ----
+  var score = 0;
+  var qs = document.querySelectorAll('.q');
+  document.getElementById('total').textContent = qs.length;
+  qs.forEach(function (q) {
+    var ans = parseInt(q.getAttribute('data-answer'), 10);
+    var btns = q.querySelectorAll('.opts button');
+    btns.forEach(function (b, i) {
+      b.dataset.label = b.textContent;
+      b.addEventListener('click', function () {
+        if (q.classList.contains('done')) return;
+        q.classList.add('done');
+        btns[ans].classList.add('right');
+        btns[ans].textContent = '✔ ' + btns[ans].dataset.label;
+        if (i === ans) {
+          score++;
+          document.getElementById('score').textContent = score;
+        } else {
+          b.classList.add('wrong');
+        }
+      });
+    });
+  });
+  document.getElementById('reset').addEventListener('click', function () {
+    score = 0;
+    document.getElementById('score').textContent = 0;
+    qs.forEach(function (q) {
+      q.classList.remove('done');
+      q.querySelectorAll('.opts button').forEach(function (b) {
+        b.classList.remove('right', 'wrong');
+        b.textContent = b.dataset.label;
+      });
+    });
+    qs[0].scrollIntoView();
+  });
+</script>
+</body>
+</html>
